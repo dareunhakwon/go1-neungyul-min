@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#1d4e89">
-<meta name="description" content="압구정 다른학원 · 공통영어2 능률[민병천] 고1 능률(민) 3·4과 기말고사 대비">
-<meta property="og:title" content="압구정 다른학원 고1 능률(민) 3·4과 기말고사 대비">
+<meta name="description" content="압구정 다른학원 · 고1 공통영어2 능률(민) 3, 4과 시험대비">
+<meta property="og:title" content="압구정 다른학원 고1 공통영어2 능률(민) 3, 4과 시험대비">
 <meta property="og:description" content="문법 개념 · 본문 읽기 · 단어장. 폰에서 바로 공부합니다.">
 <meta property="og:image" content="https://dareunhakwon.github.io/go1-neungyul-min/og-logo.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="고1 능률(민) 3·4과">
+<meta name="apple-mobile-web-app-title" content="고1 공통영어2 능률(민) 3, 4과">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>고1 능률(민) 3·4과 기말고사 대비</title>
+<title>고1 공통영어2 능률(민) 3, 4과 시험대비</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,600&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
 <style>
@@ -70,6 +70,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 @keyframes coin-turn { from { transform: rotateX(6deg) rotateY(0deg); } to { transform: rotateX(6deg) rotateY(360deg); } }
 .hero .k { font-size: 12.5px; letter-spacing: .08em; color: var(--muted); font-weight: 700; }
 .hero h1 { margin: 6px 0 4px; font-size: clamp(23px, 6.4vw, 31px); line-height: 1.22; font-weight: 900; letter-spacing: -.035em; text-wrap: balance; }
+h1 .nb { display: inline-block; }
 .hero p { margin: 0; color: var(--muted); font-size: 15px; }
 .tbk { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
 .tbk b { flex: none; width: 54px; aspect-ratio: 1092 / 1484; border-radius: 4px; border: 2px solid var(--card); box-shadow: 0 5px 10px -4px rgba(20, 32, 79, .5); background: #fbe9c6 url(data:,) center / cover no-repeat; transform: rotate(-3deg); }
@@ -265,7 +266,7 @@ textarea { width: 100%; margin-top: 10px; min-height: 92px; border: 1.5px solid 
 <div class="dock" id="dock" hidden><div></div></div>
 
 <script>
-const META = {"slug": "high1-neungyule-min-l34", "academy": "압구정 다른학원", "site": "drschool.kr", "maker": "", "grade": "고1", "textbook": "공통영어2 능률[민병천]", "lessons": "3·4과", "term": "기말고사 대비", "storage_key": "", "lead": "", "logo": true, "tb": false, "audio": true, "label": "고1 능률(민)", "tagline": "내신 1등급 프로젝트"};
+const META = {"slug": "high1-neungyule-min-l34", "academy": "압구정 다른학원", "site": "drschool.kr", "maker": "", "grade": "고1", "textbook": "공통영어2 능률[민병천]", "lessons": "3, 4과", "term": "시험대비", "storage_key": "", "lead": "", "logo": true, "tb": false, "audio": true, "label": "고1 공통영어2 능률(민)", "tagline": "내신 1등급 프로젝트"};
 function startApp(DATA) {
   const G = DATA.find(b => b.kind === 'concept') || { lessons: [] };
   const CIRC = '①②③④⑤';
@@ -301,7 +302,7 @@ function startApp(DATA) {
     const coin = META.logo ? '<div class="coin" aria-hidden="true"><div class="sp"><i style="--z:-4px"></i><i style="--z:-3px"></i><i style="--z:-2px"></i><i style="--z:-1px"></i><i style="--z:0px"></i><i style="--z:1px"></i><i style="--z:2px"></i><i style="--z:3px"></i><i style="--z:4px"></i><b class="f"></b><b class="f bk"></b></div></div>' : '';
     const credit = [META.academy ? `<b>${META.academy}</b>` : '', META.site ? `<a href="https://${META.site}" target="_blank" rel="noopener">홈페이지 바로가기</a>` : ''].filter(Boolean).join(' · ');
     app.classList.add('home');
-    app.innerHTML = `<section class="hero${META.logo ? '' : ' nologo'}">${coin}<h1>${META.label ? META.label + ' ' : ''}${META.lessons} ${META.term}</h1>${META.lead ? `<p>${META.lead}</p>` : ''}${META.tb ? `<div class="tbk"><b></b><span>이 교과서로 공부해요<small>${META.textbook} ${META.grade} 영어</small></span></div>` : ''}</section><div class="shelf" style="grid-template-rows: repeat(${DATA.length}, minmax(84px, 172px))">${cards}</div><p class="credit">${credit}${credit && META.maker ? '<br>' : ''}${META.maker ? '만든 곳 ' + META.maker : ''}</p>`;
+    app.innerHTML = `<section class="hero${META.logo ? '' : ' nologo'}">${coin}<h1>${META.label ? `<span class="nb">${META.label}</span> ` : ''}<span class="nb">${META.lessons} ${META.term}</span></h1>${META.lead ? `<p>${META.lead}</p>` : ''}${META.tb ? `<div class="tbk"><b></b><span>이 교과서로 공부해요<small>${META.textbook} ${META.grade} 영어</small></span></div>` : ''}</section><div class="shelf" style="grid-template-rows: repeat(${DATA.length}, minmax(84px, 172px))">${cards}</div><p class="credit">${credit}${credit && META.maker ? '<br>' : ''}${META.maker ? '만든 곳 ' + META.maker : ''}</p>`;
   }
 
   function practice(l, ci, ii, it) {
@@ -521,7 +522,7 @@ function startApp(DATA) {
   const b64 = t => Uint8Array.from(atob(t), c => c.charCodeAt(0));
   const open = async key => JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(ENC.iv) }, key, b64(ENC.ct))));
   const begin = data => { lock.hidden = true; document.querySelector('.bar').hidden = false; startApp(data); };
-  const show = () => { document.querySelector('.bar').hidden = true; lock.hidden = false; document.getElementById('locktitle').textContent = `${(META.label || META.grade + ' 영어')} ${META.lessons} ${META.term}`; document.getElementById('lockacad').textContent = META.academy || ''; };
+  const show = () => { document.querySelector('.bar').hidden = true; lock.hidden = false; document.getElementById('locktitle').innerHTML = `<span class="nb">${(META.label || META.grade + ' 영어')}</span> <span class="nb">${META.lessons} ${META.term}</span>`; document.getElementById('lockacad').textContent = META.academy || ''; };
   (async () => {
     if (!(window.crypto && crypto.subtle)) { show(); msg.textContent = '이 브라우저에서는 열 수 없어요. 크롬이나 사파리로 열어 주세요.'; return; }
     try {                                           // 전에 연 폰은 다시 묻지 않는다
