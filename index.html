@@ -69,7 +69,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .coin .f.bk { transform: rotateY(180deg) translateZ(5px); }
 @keyframes coin-turn { from { transform: rotateX(6deg) rotateY(0deg); } to { transform: rotateX(6deg) rotateY(360deg); } }
 .hero .k { font-size: 12.5px; letter-spacing: .08em; color: var(--muted); font-weight: 700; }
-.hero h1 { margin: 6px 0 4px; font-size: clamp(27px, 7.4vw, 36px); line-height: 1.22; font-weight: 900; letter-spacing: -.035em; text-wrap: balance; }
+.hero h1 { margin: 6px 0 4px; font-size: clamp(23px, 6.4vw, 31px); line-height: 1.22; font-weight: 900; letter-spacing: -.035em; text-wrap: balance; }
 .hero p { margin: 0; color: var(--muted); font-size: 15px; }
 .tbk { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
 .tbk b { flex: none; width: 54px; aspect-ratio: 1092 / 1484; border-radius: 4px; border: 2px solid var(--card); box-shadow: 0 5px 10px -4px rgba(20, 32, 79, .5); background: #fbe9c6 url(data:,) center / cover no-repeat; transform: rotate(-3deg); }
@@ -88,6 +88,20 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .credit { margin: 26px 0 0; text-align: center; font-size: 12.5px; color: var(--muted); letter-spacing: .04em; }
 .credit b { color: var(--ink); font-weight: 700; }
 .credit a { color: var(--bk); font-weight: 700; text-underline-offset: 3px; display: inline-block; padding: 8px 2px; }
+/* 첫 화면은 한 화면에 — 카드 높이를 남은 화면에 맞춘다 */
+.wrap.home { padding-bottom: 0; display: flex; flex-direction: column; height: calc(100vh - 53px - env(safe-area-inset-top, 0px)); height: calc(100dvh - 53px - env(safe-area-inset-top, 0px)); }
+.wrap.home .hero { flex: none; padding: 14px 0 2px; min-height: 82px; padding-right: 80px; }
+.wrap.home .hero.nologo { padding-right: 0; min-height: 0; }
+.wrap.home .coin { --d: 68px; top: 8px; }
+.wrap.home .hero h1 { margin: 0; }
+.wrap.home .shelf { flex: 0 1 auto; min-height: 0; margin-top: 12px; gap: 10px; align-content: start; }
+.wrap.home .cover { min-height: 0; height: 100%; padding: 12px 18px; container-type: size; display: flex; flex-direction: column; justify-content: center; }
+.wrap.home .cover .w { font-size: clamp(32px, 11vw, 60px); font-size: clamp(30px, min(15vw, 42cqh), 66px); }
+.wrap.home .cover .t { margin-top: 6px; margin-top: clamp(2px, 5cqh, 12px); }
+.wrap.home .cover svg { top: 50%; transform: translateY(-50%); width: min(104px, 72cqh); }
+.wrap.home .cover .st { align-self: flex-start; margin-top: 6px; }
+@container (max-height: 134px) { .wrap.home .cover .d { display: none; } }
+.wrap.home .credit { flex: none; margin: 6px 0 0; padding-bottom: env(safe-area-inset-bottom, 0px); }
 
 /* 갈래 머리 */
 .lh { margin: 26px 0 10px; display: flex; align-items: baseline; gap: 12px; }
@@ -251,7 +265,7 @@ textarea { width: 100%; margin-top: 10px; min-height: 92px; border: 1.5px solid 
 <div class="dock" id="dock" hidden><div></div></div>
 
 <script>
-const META = {"slug": "high1-neungyule-min-l34", "academy": "압구정 다른학원", "site": "drschool.kr", "maker": "", "grade": "고1", "textbook": "공통영어2 능률[민병천]", "lessons": "3·4과", "term": "기말고사 대비", "storage_key": "", "lead": "개념을 읽고, 문장으로 확인하고, 시험 규격 그대로 풀어 봅니다.", "logo": true, "tb": false, "audio": true, "label": "고1 능률(민)", "tagline": "내신 1등급 프로젝트"};
+const META = {"slug": "high1-neungyule-min-l34", "academy": "압구정 다른학원", "site": "drschool.kr", "maker": "", "grade": "고1", "textbook": "공통영어2 능률[민병천]", "lessons": "3·4과", "term": "기말고사 대비", "storage_key": "", "lead": "", "logo": true, "tb": false, "audio": true, "label": "고1 능률(민)", "tagline": "내신 1등급 프로젝트"};
 function startApp(DATA) {
   const G = DATA.find(b => b.kind === 'concept') || { lessons: [] };
   const CIRC = '①②③④⑤';
@@ -286,7 +300,8 @@ function startApp(DATA) {
     }).join('');
     const coin = META.logo ? '<div class="coin" aria-hidden="true"><div class="sp"><i style="--z:-4px"></i><i style="--z:-3px"></i><i style="--z:-2px"></i><i style="--z:-1px"></i><i style="--z:0px"></i><i style="--z:1px"></i><i style="--z:2px"></i><i style="--z:3px"></i><i style="--z:4px"></i><b class="f"></b><b class="f bk"></b></div></div>' : '';
     const credit = [META.academy ? `<b>${META.academy}</b>` : '', META.site ? `<a href="https://${META.site}" target="_blank" rel="noopener">홈페이지 바로가기</a>` : ''].filter(Boolean).join(' · ');
-    app.innerHTML = `<section class="hero${META.logo ? '' : ' nologo'}">${coin}<h1>${META.label ? META.label + ' ' : ''}${META.lessons} ${META.term}</h1><p>${META.lead}</p>${META.tb ? `<div class="tbk"><b></b><span>이 교과서로 공부해요<small>${META.textbook} ${META.grade} 영어</small></span></div>` : ''}</section><div class="shelf">${cards}</div><p class="credit">${credit}${credit && META.maker ? '<br>' : ''}${META.maker ? '만든 곳 ' + META.maker : ''}</p>`;
+    app.classList.add('home');
+    app.innerHTML = `<section class="hero${META.logo ? '' : ' nologo'}">${coin}<h1>${META.label ? META.label + ' ' : ''}${META.lessons} ${META.term}</h1>${META.lead ? `<p>${META.lead}</p>` : ''}${META.tb ? `<div class="tbk"><b></b><span>이 교과서로 공부해요<small>${META.textbook} ${META.grade} 영어</small></span></div>` : ''}</section><div class="shelf" style="grid-template-rows: repeat(${DATA.length}, minmax(84px, 172px))">${cards}</div><p class="credit">${credit}${credit && META.maker ? '<br>' : ''}${META.maker ? '만든 곳 ' + META.maker : ''}</p>`;
   }
 
   function practice(l, ci, ii, it) {
@@ -418,6 +433,7 @@ function startApp(DATA) {
   function route() {
     const id = (location.hash || '#home').slice(1), b = book(id);
     confirmReset = false; hush();
+    app.classList.toggle('home', !b);
     if (!b) { home(); window.scrollTo(0, 0); return; }
     const c = b.color;
     document.documentElement.style.setProperty('--bk', c);
